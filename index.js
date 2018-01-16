@@ -116,13 +116,11 @@ Board.prototype.displayBoard = function() {
 
 Board.prototype.play = function(i, j) {
 	if (this.bdArr[i][j].symbol !== "+") {
-  	console.log("Invalid move");
-  	return;
+  	return "Invalid move";
   }
 
   if (i >= this.BOARD_SIZE || j >= this.BOARD_SIZE || i < 0 || j < 0) {
-  	console.log("Out of bounds");
-    return;
+  	return "Out of bounds";
   }
 
   this.currentMove++;
@@ -144,12 +142,12 @@ Board.prototype.play = function(i, j) {
   // if it does not, then it is a suicide move, and you lose your piece.
   if (newPiece.blockIsDead()) { // this should be an invalid move...
   	newPiece.killBlock();
-    console.log('invalid move');
-    this.blacksTurn = !this.blacksTurn;
+    return "Suicidal move";
   }
 
   this.blacksTurn = !this.blacksTurn;
   this.displayBoard();
+  return "Played at (" + i + ", " + j + ")";
 };
 
 Board.prototype.createBoardView = function() {
@@ -177,14 +175,23 @@ Board.prototype.createBoardView = function() {
         return function() {
         	// it should CALL play, and then another function
           // which updates the DOM.
-          self.play(i, j);
+          var msg = self.play(i, j);
           self.updateBoardView();
+          self.updateGameHistory(msg);
         	console.log(self.bdArr[i][j]);
       	}
       })(i, j));
     }
   }
   return board;
+};
+
+Board.prototype.updateGameHistory = function(msg) {
+  var history = document.getElementById('board-history');
+  var newMove = document.createElement('li');
+  newMove.innerHTML = msg;
+  history.appendChild(newMove);
+  history.scrollTop = history.scrollHeight;
 };
 
 Board.prototype.updateBoardView = function() {

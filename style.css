@@ -40,3 +40,13 @@ table.no-spacing {
   display: flex;
 
 }
+
+#board-history {
+  max-height: 100%;
+  overflow: scroll;
+}
+
+#history-container {
+  display: flex;
+  max-height: 640px;
+}
