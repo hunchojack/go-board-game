@@ -1,0 +1,42 @@
+#board {
+  margin: 1em;
+}
+
+#board td {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  border: 1px solid black;
+  background-color: grey;
+}
+
+.no-piece {
+  width: 30px;
+  height: 30px;
+  background-color: grey;
+  border-radius: 50%;
+}
+
+.black-piece {
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  border-radius:50%;
+}
+
+.white-piece {
+  width: 30px;
+  height: 30px;
+
+  background-color: white;
+  border-radius: 50%;
+}
+
+table.no-spacing {
+  border-spacing: 0;
+}
+
+#board-space {
+  display: flex;
+
+}
