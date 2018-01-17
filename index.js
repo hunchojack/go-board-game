@@ -207,23 +207,12 @@ Board.prototype.setUpReset = function() {
 	reset.addEventListener('click', function() {
 		self.clearBoard();
     self.updateBoardView();
-	}); // will this work
-}
+	});
+};
 
+// client side code;
 var b = new Board();
 b.createBoard();
 var insertLocn = document.getElementById('board-container');
 insertLocn.appendChild(b.createBoardView());
 b.setUpReset();
-
-// how to re-render the DOM though? after something has changed...
-// b.play(7, 4);
-// b.play(7, 3);
-// b.play(7, 2);
-
-
-// console.log(b.bdArr[5][2]);
-// console.log(b.bdArr[5][2].qi);
-// console.log(b.bdArr[7][2]);
-
-// VIEW LAYER WILL BE DOWN HERE, USING react
