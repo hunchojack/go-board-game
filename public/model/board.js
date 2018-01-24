@@ -5,7 +5,7 @@ class Board {
     this.blacksTurn = true;
     this.bdArr = [];
   }
-
+  
   clearBoard() {
     console.log('called');
   	this.bdArr.forEach(function(row) {
